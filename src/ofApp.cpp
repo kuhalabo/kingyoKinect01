@@ -148,7 +148,7 @@ void ofApp::update(){
     for(int i = 0; i < birds4.size(); i++)
     {
         birds4[i].update();
-        birds4[i].update();
+//        birds4[i].update();
 //        birds4[i].update();
     }
     
