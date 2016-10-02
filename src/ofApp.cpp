@@ -64,7 +64,8 @@ void ofApp::setup(){
     ofSetBackgroundAuto(false);
     //	ofSetBackgroundAuto(true);
     ofSetCircleResolution(64);
-    //    ofHideCursor();
+    
+    ofHideCursor();
     
     //    bgcolor = ofColor(32,178,170,32); // Emerald Green
     bgcolor = BGCOLORn;
