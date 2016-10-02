@@ -12,7 +12,7 @@ Ball::Ball(){
     pos = ofPoint(ofGetWidth()/2, ofGetHeight()/2);
     vel = ofPoint(ofRandom(-0.8,0.8),ofRandom(-0.8,0.8));
     acc = ofPoint(0,0);
-    radius = ofRandom(35,50);
+    radius = ofRandom(35,150);
     //    bcolor = ofColor(ofRandom(200,255), ofRandom(0,255), ofRandom(0,255), 80);
     fish = 1;
     visible = true;
