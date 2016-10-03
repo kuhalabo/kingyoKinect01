@@ -36,6 +36,7 @@ public:
     int id;
     float head;
     float tail;
+    float rapid;
     ofVec2f pos;
     ofVec2f vel;
     ofVec2f acc;

@@ -17,13 +17,14 @@ id(_id),
 circleColor(_circleColor),
 pos( ofRandom( 0, ofGetWidth() ), ofRandom( 0, ofGetHeight() ) ),
 vel( ofRandom(-2,2), ofRandom(-2,2) ),
-separationVel(0,0), alignmentVel(0,0), cohesionVel(0,0), groupCenterPos(0,0)
+separationVel(0,0), alignmentVel(0,0), cohesionVel(0,0), groupCenterPos(100,100)
 {
     //    head = ofRandom(0.5,3.0);
     head = 2;
     //    head = 10;
     //    tail = head * 3.0;
     tail = head * 4.0;
+    rapid = 1.0;
     acc.set(0, 0);
     //    cout << "CTOR, ID:" << id << endl;
 }
@@ -142,13 +143,15 @@ void Bird::update()
     cohesionVel.normalize();
     
     vel += (separationVel*0.15) + (alignmentVel*0.035) + (cohesionVel*0.02);
+//    vel += (separationVel*0.15) + (alignmentVel*0.1) + (cohesionVel*0.02);
     
     //if(vel.length() > 2)
     //{
     //  vel.scale(2);
     //}
     vel.scale(1.5);
-    pos += vel;
+//    vel.scale(3);
+    pos += vel * rapid;
     
     if( pos.x < 0 )
     {
@@ -176,10 +179,14 @@ void Bird::draw()
 {
     ofSetColor(circleColor);
     //    ofNoFill();
-    ofDrawCircle(pos, head);
+//    ofDrawCircle(pos, head * 0.2);
     //   ofRect(pos,head, head);
     //    ofCircle(pos, 2);
-    ofDrawLine(pos.x + vel.x * tail * 0.5, pos.y + vel.y * tail * 0.5, pos.x - vel.x * tail, pos.y - vel.y * tail);
+//    ofDrawLine(pos.x + vel.x * tail * 0.5, pos.y + vel.y * tail * 0.5, pos.x - vel.x * tail, pos.y - vel.y * tail);
+//    ofPoint pos1 = pos.rotate(90);
+//    ofPoint pos2 = pos.rotate(-90);
+//    ofDrawLine(pos + vel * tail * 0.5, pos - vel * tail);
+    ofDrawArrow(pos - vel * tail, pos + vel * tail * 0.5, head);
     //    ofFill();
 }
 

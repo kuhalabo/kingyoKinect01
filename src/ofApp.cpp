@@ -3,21 +3,23 @@
 //#define RBOID 100
 #define BOID1 400
 //#define GBOID 50
-#define BOID2 300
+#define BOID2 400
 //#define BBOID 25
 #define BOID3 100
-#define BOID4 100
+#define BOID4 50
 
 #define BGCOLORn ofColor(0,0,0,20) // black
 //#define BGCOLORd ofColor(32,210,200,50); //
 #define BGCOLORd ofColor(32,178,170,50); // Emerald Green
 //#define BGCOLORd ofColor(0,150,150,20); //
 
-#define SDWCOLOR1n ofColor(255,0,0,20) // red
-#define SDWCOLOR2n ofColor(0,0,255,20); // blue
+//#define SDWCOLOR1n ofColor(255,0,0,20) // red
+#define SDWCOLOR1n ofColor(255,0,255,30) // magenta
+#define SDWCOLOR2n ofColor(0,0,255,30); // blue
 #define SDWCOLOR1d ofColor(255,255,0,200) //
 #define SDWCOLOR2d ofColor(255,128,10,200); //
 
+//#define COLOR1n ofColor(255,0,255,255) // magenta
 #define COLOR1n ofColor(255,0,0,255) // red
 #define COLOR2n ofColor(0,255,0,255)  // green
 #define COLOR3n ofColor(0,255,255,255) //cyan
@@ -63,7 +65,7 @@ void ofApp::setup(){
     //    ofSetBackgroundColor(255,255,255);
     ofSetBackgroundAuto(false);
     //	ofSetBackgroundAuto(true);
-    ofSetCircleResolution(64);
+//    ofSetCircleResolution(64);
     
     ofHideCursor();
     
@@ -89,25 +91,36 @@ void ofApp::setup(){
     birds1.reserve(BOID1);
     for(int i = 0; i < BOID1; i++)
     {
-        birds1.push_back(*new Bird( &birds1, i, color1, &birds2, &birds3, &nullBirds));
+        birds1.push_back(*new Bird( &birds1, i, color1, &birds4, &birds3, &nullBirds));
+        birds1[i].rapid = 1.5;
     }
     
     birds2.reserve(BOID2);
     for(int i = 0; i < BOID2; i++)
     {
-        birds2.push_back(*new Bird( &birds2, i, color2, &nullBirds, &birds3, &nullBirds));
+        birds2.push_back(*new Bird( &birds2, i, color2, &birds1, &birds3, &nullBirds));
+        birds2[i].head = 2.5;
+
     }
     
     birds3.reserve(BOID3);
     for(int i = 0; i < BOID3; i++)
     {
-        birds3.push_back(*new Bird( &nullBirds, i, color3, &nullBirds, &birds2, &nullBirds));
+        birds3.push_back(*new Bird( &nullBirds, i, color3, &nullBirds, &birds2, &birds1));
+        birds3[i].head = 3;
+
     }
     
     birds4.reserve(BOID4);
     for(int i = 0; i < BOID4; i++)
     {
         birds4.push_back(*new Bird( &birds4, i, color4, &birds1, &birds3, &nullBirds));
+//        birds4[i].rapid = 4.5;
+          birds4[i].head = 4;
+//          birds4[i].tail = 5.0 * 4;
+
+//        birds4[i].head = ofRandom(1.5,3.5);
+//        birds4[i].tail = 5.0 * 4;
     }
 
     /*
@@ -148,6 +161,8 @@ void ofApp::update(){
     
     for(int i = 0; i < birds4.size(); i++)
     {
+//        birds4[i].rapid = ofRandom(4.5,6.5);
+        birds4[i].rapid = 2.5 + sin(ss + (mm % 6) * 60 + i * 2) * 2.0;
         birds4[i].update();
 //        birds4[i].update();
 //        birds4[i].update();
