@@ -24,7 +24,7 @@ void kinectShadowHand::setup() {
     colorImg.allocate(kinect.width, kinect.height);
     grayImage01.allocate(kinect.width, kinect.height);
     grayImage02.allocate(kinect.width, kinect.height);
-    grayImage03.allocate(kinect.width, kinect.height);
+//    grayImage03.allocate(kinect.width, kinect.height);
     grayThreshNear.allocate(kinect.width, kinect.height);
     grayThreshFar.allocate(kinect.width, kinect.height);
     
@@ -181,10 +181,10 @@ void kinectShadowHand::draw() {
             centroX01 = contourFinder01.blobs[i].centroid.x * ofGetWidth()/(float)kinect.width;
             centroY01 = contourFinder01.blobs[i].centroid.y * ofGetHeight()/(float)kinect.height;
             if(centroX01 > 0 && centroX01 < ofGetWidth() && centroY01 > 0 && centroY01 < ofGetHeight()){
-                //ofSetColor(ofColor::white, alphaSpring);
+//                ofSetColor(ofColor::white, alphaSpring);
                 posCentroid[i].set(centroX01,centroY01);
-                ofSetColor(ofColor::white, 50);
-                ofDrawCircle(posCentroid[i], 40); // Centroid draw
+                ofSetColor(ofColor::white, 80);
+                ofDrawCircle(posCentroid[i], 25); // Centroid draw
             }
         }
     }

@@ -45,14 +45,14 @@ public:
     
     ofxCvGrayscaleImage grayImage01; // grayscale depth image
     ofxCvGrayscaleImage grayImage02; // grayscale depth image
-    ofxCvGrayscaleImage grayImage03; // grayscale depth image
+    //ofxCvGrayscaleImage grayImage03; // grayscale depth image
     
     ofxCvGrayscaleImage grayThreshNear; // the near thresholded image
     ofxCvGrayscaleImage grayThreshFar; // the far thresholded image
     
     ofxCvContourFinder contourFinder01;
     ofxCvContourFinder contourFinder02;
-    ofxCvContourFinder contourFinder03;
+    //ofxCvContourFinder contourFinder03;
     
     //--------------------------
 
@@ -75,7 +75,7 @@ public:
 //#define NCENTROID 3
     int nCentroid = 3; // セル生成場所の重心の検出個数
     ofVec2f posCentroid[10];
-    ofColor shadwColor01 = ofColor::red;
+    ofColor shadwColor01 = ofColor::magenta;
     ofColor shadwColor02 = ofColor::blue;
     
     
