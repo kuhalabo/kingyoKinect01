@@ -110,7 +110,7 @@ void kinectShadowHand::update() {
  */
         }
         grayImage02.flagImageChanged();
-        contourFinder02.findContours(grayImage02, 50, (kinect.width*kinect.height)/4, nCentroid, false);
+//        contourFinder02.findContours(grayImage02, 50, (kinect.width*kinect.height)/4, nCentroid, false);
  
         /*
         grayImage03.setFromPixels(kinect.getDepthPixels(), kinect.width, kinect.height);
@@ -152,7 +152,9 @@ void kinectShadowHand::update() {
 
 void kinectShadowHand::draw() {
     const int TICK_INTERVAL = 3;
-   ofSetRectMode(OF_RECTMODE_CORNER);
+//    ofRectangle myRect;
+//    int r00 = ofRandom(10,50);
+    ofSetRectMode(OF_RECTMODE_CORNER);
     ofScale(-1, 1);
     ofTranslate(ofGetWidth() * (-1), 0);
     //------------------------------------
@@ -183,8 +185,15 @@ void kinectShadowHand::draw() {
             if(centroX01 > 0 && centroX01 < ofGetWidth() && centroY01 > 0 && centroY01 < ofGetHeight()){
 //                ofSetColor(ofColor::white, alphaSpring);
                 posCentroid[i].set(centroX01,centroY01);
-                ofSetColor(ofColor::white, 80);
-                ofDrawCircle(posCentroid[i], 25); // Centroid draw
+                ofSetColor(ofColor::white, 20);
+                ofDrawCircle(posCentroid[i], 35); // Centroid draw
+                ofSetColor(ofColor::white, 30);
+                ofDrawCircle(posCentroid[i], 20); // Centroid draw
+                ofSetColor(ofColor::white, 40);
+                ofDrawCircle(posCentroid[i], 10); // Centroid draw
+                //myRect = ofRectangle(posCentroid[i].x - 15, posCentroid[i].y - 15, 30, 30);
+                //ofDrawRectangle(myRect);
+                // ofDrawRectangle(posCentroid[i].x - 15, posCentroid[i].y - 15, 30, 30); // Centroid draw
             }
         }
     }

@@ -19,8 +19,8 @@
 class Ball {
 public:
     ofVec2f pos;
-    ofPoint vel;
-    ofPoint acc;
+    ofVec2f vel;
+    ofVec2f acc;
     float radius;
     ofColor bcolor;
     int fish;

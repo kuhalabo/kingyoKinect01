@@ -1,12 +1,12 @@
 #include "ofApp.h"
 
 //#define RBOID 100
-#define BOID1 400
+#define BOID1 350
 //#define GBOID 50
-#define BOID2 400
+#define BOID2 300
 //#define BBOID 25
-#define BOID3 100
-#define BOID4 50
+#define BOID3 150
+#define BOID4 60
 
 #define BGCOLORn ofColor(0,0,0,20) // black
 //#define BGCOLORd ofColor(32,210,200,50); //
@@ -16,8 +16,8 @@
 //#define SDWCOLOR1n ofColor(255,0,0,20) // red
 #define SDWCOLOR1n ofColor(255,0,255,30) // magenta
 #define SDWCOLOR2n ofColor(0,0,255,30); // blue
-#define SDWCOLOR1d ofColor(255,255,0,200) //
-#define SDWCOLOR2d ofColor(255,128,10,200); //
+#define SDWCOLOR1d ofColor(255,255,255,255) //
+#define SDWCOLOR2d ofColor(255,0,255,255); //
 
 //#define COLOR1n ofColor(255,0,255,255) // magenta
 #define COLOR1n ofColor(255,0,0,255) // red
@@ -34,7 +34,7 @@
 #define COLOR4d ofColor(255,255,0,255) // Yellow
 #define COLOR5d ofColor(255,165,0,255) //orange
 
-#define FRATE 60
+#define FRATE 30
 
 int mm; // present minute
 int hh; // present hour
@@ -65,7 +65,7 @@ void ofApp::setup(){
     //    ofSetBackgroundColor(255,255,255);
     ofSetBackgroundAuto(false);
     //	ofSetBackgroundAuto(true);
-//    ofSetCircleResolution(64);
+    ofSetCircleResolution(64);
     
     ofHideCursor();
     
@@ -82,7 +82,10 @@ void ofApp::setup(){
     ballsNum = 7;
     counterBall = 0;
     
-//    hh = ofGetHours();
+    hh = ofGetHours();
+    mm = ofGetMinutes();
+    ss = ofGetSeconds();
+
     hh = 0;
     setNightMode(hh);
     setColorDayNight();
@@ -135,6 +138,9 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
 
+    mm = ofGetMinutes();
+    ss = ofGetSeconds();
+
     shadowHand.update();
 
     // Boids
@@ -172,6 +178,7 @@ void ofApp::update(){
     for(int i = 0; i < balls.size(); i++)
     {
         if(balls[i].visible){
+            balls[i].update();
             for(int j = 0; j < birds1.size(); j++)
             {
                 switch ( balls[i].fish )
@@ -195,10 +202,9 @@ void ofApp::update(){
                 }
             }
         }
+     //   balls[i].~Ball();
     }
   
-    mm = ofGetMinutes();
-    ss = ofGetSeconds();
 /*
     if( mm % 10 < 1 && ss < 1) {
 //        counterBall++;
@@ -212,11 +218,11 @@ void ofApp::update(){
     }
 */
     //if(  ) {
-    if( ss % 3 < 1 && ofGetFrameNum() % (FRATE / 2 ) < 1) {
+    if( ss % 3 < 1 && ofGetFrameNum() % ( FRATE ) < 1) {
         for(int i = 0; i < shadowHand.nCentroid; i++)
         {
             if( shadowHand.posCentroid[i].length() > 0 )
-                ballGenerate(shadowHand.posCentroid[i], ofRandom(30, 100));
+                ballGenerate(shadowHand.posCentroid[i], ofRandom(50, 150));
         }
     }
 }
@@ -381,8 +387,7 @@ void ofApp::mousePressed(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
     mouse_pressed = false;
-    ballGenerate(ofPoint(x,y),0);
-
+    if(x < ofGetWidth() && y < ofGetHeight()) ballGenerate(ofVec2f(x,y),50);
 }
 
 //--------------------------------------------------------------
@@ -410,9 +415,8 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
-
 //--------------------------------------------------------------
-void ofApp::ballGenerate(ofPoint _pos, float _radius){
+void ofApp::ballGenerate(ofVec2f _pos, float _radius){
     if( ballsNum <= balls.size() )
     {
         balls.erase(balls.begin());

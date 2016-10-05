@@ -20,7 +20,7 @@
 class Bird
 {
 public:
-    Bird(vector<Bird>* const, const int, ofColor, vector<Bird>* const, vector<Bird>* const, vector<Bird>* const);
+    Bird(vector<Bird>* , int, ofColor, vector<Bird>* , vector<Bird>* , vector<Bird>* );
     virtual ~Bird();
     
     virtual void update();

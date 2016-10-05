@@ -8,7 +8,7 @@
 
 #include "Bird.hpp"
 
-Bird::Bird( vector<Bird>* const _pSelfGroup, const int _id, const ofColor _circleColor, vector<Bird>* const _pEnemyGroup, vector<Bird>* const _pFriendGroup, vector<Bird>* const _pFriendGroup2 ) :
+Bird::Bird( vector<Bird>* _pSelfGroup, int _id, ofColor _circleColor, vector<Bird>* _pEnemyGroup, vector<Bird>* _pFriendGroup, vector<Bird>* _pFriendGroup2 ) :
 pSelfGroup(_pSelfGroup),
 pEnemyGroup(_pEnemyGroup),
 pFriendGroup(_pFriendGroup),

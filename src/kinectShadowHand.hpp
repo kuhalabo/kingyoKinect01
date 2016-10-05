@@ -74,7 +74,7 @@ public:
     //int cellDirection = 0;
 //#define NCENTROID 3
     int nCentroid = 3; // セル生成場所の重心の検出個数
-    ofVec2f posCentroid[10];
+    ofVec2f posCentroid[3];
     ofColor shadwColor01 = ofColor::magenta;
     ofColor shadwColor02 = ofColor::blue;
     

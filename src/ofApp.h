@@ -39,10 +39,7 @@ public:
     vector<Bird> birds4;
     vector<Bird> nullBirds;
     
-    int ballsNum;
-    int counterBall;
-    
-    void ballGenerate(ofPoint _pos, float _radius);
+    void ballGenerate(ofVec2f _pos, float _radius);
     void setColorDayNight();
     void setNightMode(int h);
     
@@ -55,6 +52,9 @@ public:
     ofColor color3;
     ofColor color4;
     ofColor color5;
+
+    int ballsNum;
+    int counterBall;
     
     // sound
 /*
