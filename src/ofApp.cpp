@@ -225,6 +225,11 @@ void ofApp::update(){
                 ballGenerate(shadowHand.posCentroid[i], ofRandom(50, 150));
         }
     }
+//    if( mm % 2 == 0 && ss % 30 == 0){
+    if( ss % 60 == 0){
+        balls.clear();
+    }
+
 }
 
 //--------------------------------------------------------------

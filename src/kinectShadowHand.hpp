@@ -65,7 +65,8 @@ public:
     int farThreshold01,farThreshold02,farThreshold03;
     int angle = 15;
     
-    int depth_min = 120; //影を検出するデプス値の最も大きい（近い）値
+//    int depth_min = 120; //影を検出するデプス値の最も大きい（近い）値
+    int depth_min = 90; //影を検出するデプス値の最も大きい（近い）値
     //int depth_min = 150;
     int depth_dif = 40;//２つの影のレイヤーのテプス値の差
     int alphaGray = 50; // 人影のアルファ値

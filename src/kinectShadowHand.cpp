@@ -80,7 +80,7 @@ void kinectShadowHand::update() {
         }
         // update the cv images
         grayImage01.flagImageChanged();
-        contourFinder01.findContours(grayImage01, 50, (kinect.width*kinect.height)/4, nCentroid, false);
+        contourFinder01.findContours(grayImage01, 50, (kinect.width * kinect.height)/4, nCentroid, false);
         
 // 02 layer
         // load grayscale depth image from the kinect source
